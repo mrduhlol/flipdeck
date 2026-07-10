@@ -1,16 +1,25 @@
+import AvatarCustomizer from "./AvatarCustomizer";
+
 function AvatarPreview() {
   return (
-    <div className="relative w-full h-full rounded-3xl bg-slate-900/40 border border-slate-700 overflow-hidden">
+    <div className="h-[620px] rounded-[32px] border border-slate-700 bg-slate-900/30 overflow-hidden flex flex-col">
 
-      {/* Background Glow */}
-      <div className="absolute w-72 h-72 rounded-full bg-violet-500/20 blur-3xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+      {/* Avatar */}
+      <div className="flex-1 flex items-center justify-center relative">
 
-      {/* Placeholder */}
-      <div className="relative flex h-full items-center justify-center">
-        <div className="w-48 h-48 rounded-full border-4 border-slate-600 flex items-center justify-center text-7xl">
+        <div className="absolute w-64 h-64 rounded-full bg-violet-500/20 blur-3xl" />
+
+        <div className="relative w-36 h-36 rounded-full border-4 border-slate-600 flex items-center justify-center text-6xl bg-slate-900/20">
           👤
         </div>
+
       </div>
+
+      {/* Divider */}
+      <div className="border-t border-slate-700" />
+
+      {/* Controls */}
+      <AvatarCustomizer />
 
     </div>
   );
