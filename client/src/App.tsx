@@ -1,7 +1,7 @@
+import Home from "./pages/Home";
+
 function App() {
-  return (
-    <h1>🎴 FlipDeck</h1>
-  );
+    return <Home />;
 }
 
 export default App;
