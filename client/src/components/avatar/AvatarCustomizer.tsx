@@ -1,4 +1,17 @@
 import type { Avatar } from "../../types/avatar";
+import { hairs } from "../../data/avatar";
+
+function nextHair(current: string) {
+  const index = hairs.indexOf(current);
+
+  return hairs[(index + 1) % hairs.length];
+}
+
+function previousHair(current: string) {
+  const index = hairs.indexOf(current);
+
+  return hairs[(index - 1 + hairs.length) % hairs.length];
+}
 
 interface AvatarCustomizerProps {
   avatar: Avatar;
@@ -18,7 +31,7 @@ function AvatarCustomizer({
           onClick={() =>
             setAvatar({
               ...avatar,
-              hair: avatar.hair - 1,
+              hair: previousHair(avatar.hair),
             })
           }
           className="text-xl hover:text-violet-400"
@@ -32,7 +45,7 @@ function AvatarCustomizer({
           onClick={() =>
             setAvatar({
               ...avatar,
-              hair: avatar.hair + 1,
+              hair: nextHair(avatar.hair),
             })
           }
           className="text-xl hover:text-violet-400"

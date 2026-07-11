@@ -1,7 +1,7 @@
 export interface Avatar {
-  skin: number;
-  hair: number;
-  eyes: number;
-  mouth: number;
-  outfit: number;
+  skin: string;
+  hair: string;
+  eyes: string;
+  mouth: string;
+  outfit: string;
 }
