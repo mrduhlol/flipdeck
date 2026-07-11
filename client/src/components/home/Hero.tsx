@@ -5,23 +5,25 @@ import type { Dispatch, SetStateAction } from "react";
 interface HeroProps {
   avatar: Avatar;
   setAvatar: Dispatch<SetStateAction<Avatar>>;
+  onJoinRoom: () => void;
 }
 
 function Hero({
   avatar,
   setAvatar,
+  onJoinRoom,
 }: HeroProps) {
   return (
-    <main className="max-w-7xl mx-auto px-8 mt-6">
-      <section className="flex items-start gap-16">
+    <main className="max-w-7xl mx-auto px-8 min-h-[calc(100vh-180px)] flex items-center">
+      <section className="w-full grid grid-cols-[380px_1fr] gap-12 items-center">
 
         {/* Left */}
-        <div className="w-[420px] shrink-0">
+        <div className="w-full">
           <AvatarPreview avatar={avatar} setAvatar={setAvatar} />
         </div>
 
         {/* Right */}
-        <div className="flex-1 pt-16">
+        <div className="flex flex-col justify-center">
 
           <input
             type="text"
@@ -45,6 +47,7 @@ function Hero({
             </button>
 
             <button
+            onClick={onJoinRoom}
               className="
               h-16
               rounded-2xl

@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <header className="text-center pt-12 pb-8">
+    <header className="text-center pt-10 pb-6">
       <h1 className="text-5xl font-bold tracking-tight">
         🎴 FlipDeck
       </h1>
