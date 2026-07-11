@@ -1,32 +1,47 @@
-function AvatarCustomizer() {
-  const options = [
-    "Hair",
-    "Eyes",
-    "Mouth",
-    "Outfit",
-    "Skin",
-  ];
+import type { Avatar } from "../../types/avatar";
 
+interface AvatarCustomizerProps {
+  avatar: Avatar;
+  setAvatar: React.Dispatch<React.SetStateAction<Avatar>>;
+}
+
+function AvatarCustomizer({
+  avatar,
+  setAvatar,
+}: AvatarCustomizerProps) {
   return (
-    <div className="p-5 space-y-3">
-      {options.map((option) => (
-        <div
-          key={option}
-          className="flex items-center justify-between rounded-xl bg-slate-800/50 px-4 py-3"
+    <div className="p-6 space-y-3">
+
+      <div className="flex items-center justify-between rounded-xl bg-slate-800/40 px-5 py-3">
+
+        <button
+          onClick={() =>
+            setAvatar({
+              ...avatar,
+              hair: avatar.hair - 1,
+            })
+          }
+          className="text-xl hover:text-violet-400"
         >
-          <button className="text-xl hover:text-violet-400 transition">
-            ❮
-          </button>
+          ❮
+        </button>
 
-          <span className="font-medium text-sm tracking-wide">
-            {option}
-          </span>
+        <span>Hair</span>
 
-          <button className="text-xl hover:text-violet-400 transition">
-            ❯
-          </button>
-        </div>
-      ))}
+        <button
+          onClick={() =>
+            setAvatar({
+              ...avatar,
+              hair: avatar.hair + 1,
+            })
+          }
+          className="text-xl hover:text-violet-400"
+        >
+          ❯
+        </button>
+
+      </div>
+
     </div>
   );
 }

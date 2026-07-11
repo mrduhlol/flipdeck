@@ -1,13 +1,23 @@
 import AvatarPreview from "../avatar/AvatarPreview";
+import type { Avatar } from "../../types/avatar";
+import type { Dispatch, SetStateAction } from "react";
 
-function Hero() {
+interface HeroProps {
+  avatar: Avatar;
+  setAvatar: Dispatch<SetStateAction<Avatar>>;
+}
+
+function Hero({
+  avatar,
+  setAvatar,
+}: HeroProps) {
   return (
     <main className="max-w-7xl mx-auto px-8 mt-6">
       <section className="flex items-start gap-16">
 
         {/* Left */}
         <div className="w-[420px] shrink-0">
-          <AvatarPreview />
+          <AvatarPreview avatar={avatar} setAvatar={setAvatar} />
         </div>
 
         {/* Right */}
