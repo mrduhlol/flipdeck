@@ -6,15 +6,18 @@ import JoinRoomModal from "../components/modals/JoinRoomModal";
 
 function Home() {
   const [avatar, setAvatar] = useState(defaultAvatar);
+  const [nickname, setNickname] = useState("");
   const [joinOpen, setJoinOpen] = useState(false);
 
   return (
     <>
       <Header />
         <Hero
-            avatar={avatar}
-            setAvatar={setAvatar}
-            onJoinRoom={() => setJoinOpen(true)}
+          avatar={avatar}
+          setAvatar={setAvatar}
+          nickname={nickname}
+          setNickname={setNickname}
+          onJoinRoom={() => setJoinOpen(true)}
         />
 
         <JoinRoomModal

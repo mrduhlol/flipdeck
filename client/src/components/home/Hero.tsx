@@ -5,12 +5,16 @@ import type { Dispatch, SetStateAction } from "react";
 interface HeroProps {
   avatar: Avatar;
   setAvatar: Dispatch<SetStateAction<Avatar>>;
+  nickname: string;
+  setNickname: Dispatch<SetStateAction<string>>;
   onJoinRoom: () => void;
 }
 
 function Hero({
   avatar,
   setAvatar,
+  nickname,
+  setNickname,
   onJoinRoom,
 }: HeroProps) {
   return (
@@ -24,11 +28,25 @@ function Hero({
 
         {/* Right */}
         <div className="flex flex-col justify-center">
-
+          
           <input
             type="text"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
             placeholder="Nickname"
-            className="w-full h-16 rounded-2xl border border-slate-700 bg-transparent px-6 text-lg outline-none focus:border-violet-500"
+            maxLength={20}
+            className="
+              w-full
+              h-16
+              rounded-2xl
+              border
+              border-slate-700
+              bg-transparent
+              px-6
+              text-lg
+              outline-none
+              focus:border-violet-500
+            "
           />
 
           <div className="mt-5 grid grid-cols-2 gap-4">

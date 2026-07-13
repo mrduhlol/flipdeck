@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 interface JoinRoomModalProps {
   open: boolean;
   onClose: () => void;
@@ -5,7 +8,15 @@ interface JoinRoomModalProps {
 
 function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
   if (!open) return null;
+  const [roomCode, setRoomCode] = useState("");
+  const navigate = useNavigate();
 
+  function handleJoin() {
+    if (roomCode.length !== 5) return;
+
+    navigate(`/lobby/${roomCode}`);
+  }
+  
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
       <div
@@ -26,8 +37,21 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
         </h2>
 
         <input
+          value={roomCode}
+          onChange={(e) => {
+            const value = e.target.value
+              .toUpperCase()
+              .replace(/[^A-Z0-9]/g, "")
+              .slice(0, 5);
+
+            setRoomCode(value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleJoin();
+            }
+          }}
           placeholder="ABCDE"
-          maxLength={5}
           className="
             w-full
             h-16
@@ -38,14 +62,13 @@ function JoinRoomModal({ open, onClose }: JoinRoomModalProps) {
             text-center
             text-3xl
             tracking-[0.35em]
-            uppercase
             outline-none
-            transition
             focus:border-violet-500
           "
         />
 
         <button
+          onClick={handleJoin}
           className="
             w-full
             h-16
